@@ -1,0 +1,45 @@
+name: Run Text-to-Speech
+
+on:
+  workflow_dispatch:
+    inputs:
+      text:
+        description: 'Text to convert to speech'
+        required: true
+        default: 'This is a test text'
+      output_file:
+        description: 'Output file name'
+        required: true
+        default: 'output.wav'
+
+jobs:
+  run-tts:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+
+    - name: Install dependencies
+      run: |
+        python -m venv .venv
+        source .venv/bin/activate
+        pip install requests python-dotenv
+
+    - name: Run TTS script
+      env:
+        GOOGLE_TTS_API_KEY: ${{ secrets.GOOGLE_TTS_API_KEY }}
+      run: |
+        source .venv/bin/activate
+        python tts.py "${{ github.event.inputs.text }}" ${{ github.event.inputs.output_file }}
+
+    - name: Upload output
+      uses: actions/upload-artifact@v2
+      with:
+        name: output-wav
+        path: ${{ github.event.inputs.output_file }}
