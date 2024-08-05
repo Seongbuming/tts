@@ -29,22 +29,40 @@ pip install requests python-dotenv
 
 ## Usage
 
+### Running Locally
+
 Run the script with the text you want to convert and the output file name:
 
 ```sh
 python tts.py output.wav "Your text here"
 ```
 
-### Arguments
+#### Arguments
 
 - `output_file`: The name of the output audio file.
 - `text`: The text to convert to speech.
 
-### Example
+#### Example
 
 ```sh
 python tts.py output.wav "This is the end of the video. Thank you for watching."
 ```
+
+### Running via GitHub Actions
+
+1. Fork this repository to **your own GitHub account**.
+2. Set up your Google Text-to-Speech API key as a secret in your GitHub repository settings:
+   1. Go to your forked repository on GitHub.
+   2. Click on **Settings**.
+   3. Click on **Secrets and variables** → **Actions** in the left sidebar.
+   4. Click on **New repository secret**.
+   5. Name the secret `GOOGLE_TTS_API_KEY` and paste your API key.
+3. Go to the **Actions** tab in your GitHub repository.
+4. Select the **Run Text-to-Speech** workflow.
+5. Click on **Run workflow**.
+6. Enter the `text to convert to speech` and `output file name`.
+7. Click **Run workflow**.
+8. Once the workflow completes, download the generated audio file from the **Artifacts** section of the workflow run.
 
 ## Notes
 
