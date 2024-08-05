@@ -19,7 +19,7 @@ pip install requests python-dotenv
 1. Clone the repository:
     ```sh
     git clone https://github.com/Seongbuming/tts.git
-    cd text-to-speech-converter
+    cd tts
     ```
 
 2. Create a .env file in the project directory and add your Google Text-to-Speech API key:
