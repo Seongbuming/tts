@@ -36,7 +36,7 @@ jobs:
         GOOGLE_TTS_API_KEY: ${{ secrets.GOOGLE_TTS_API_KEY }}
       run: |
         source .venv/bin/activate
-        python tts.py "${{ github.event.inputs.text }}" ${{ github.event.inputs.output_file }}
+        python tts.py ${{ github.event.inputs.output_file }} "${{ github.event.inputs.text }}"
 
     - name: Upload output
       uses: actions/upload-artifact@v2
