@@ -18,7 +18,7 @@ pip install requests python-dotenv
 
 1. Clone the repository:
     ```sh
-    git clone https://github.com/your-repo/text-to-speech-converter.git
+    git clone https://github.com/Seongbuming/tts.git
     cd text-to-speech-converter
     ```
 
